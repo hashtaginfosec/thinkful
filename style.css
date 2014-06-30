@@ -1,0 +1,38 @@
+html, body {
+    background-color: #AC59FF;
+	font-family:comic-sans;
+	    height: 100%;
+}
+
+a
+{
+	color: white;
+	text-align: center;
+	
+}
+
+p
+{
+    display:inline;
+	text-align: left;
+	font-weight:bold;
+		
+}
+
+
+#block {
+    width: 100%;
+    height: 15%;
+    background: black;
+}
+
+#mainsection{
+	margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+    text-align: left;
+}
+div {
+    display: block;
+	text-align: center;
+}
