@@ -39,8 +39,7 @@ if __name__ == '__main__':
         filename, num = argv
         num = int(num)
     else:
-        print("We need exactly 1 number. Using 20 for now. \n")
-        num = 20
+        num = input("Please type a number >>> ")
 
     #if evendivid(num1, num2):
     #    print("true xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
