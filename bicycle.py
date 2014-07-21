@@ -23,17 +23,14 @@ class Frames(object):
 class Manufacturers(object):
     def __init__(self, name, percent):
         self.name = name
-        self.bicycle_models = []
         self.percent = percent
-    
-    #create bikes using bicycleScript.py
-    def new_bicycle(self, model_name, frame, wheel):
-        self.bicycle_models.append(Bicycles(model_name, self, frame, wheel))
 
 
+#This class will construct a bike
 class Bicycles(object):
     def __init__(self, name, manufacturer, frame, wheel):
-        self.weight = self.frame.weight + self.wheel.weight * 2
+
+        self.weight = Frames.weight + Wheels.weight * 2
         self.cost = self.frame.cost + self.wheel.cost * 2
         self.name = name
         self.wheel = wheel
@@ -48,7 +45,7 @@ class Shops(object):
         self.name = name
         self.profit = 0  #we start with no profit
 
-    #Now add bikes to inventory that will be set by bicycleScript.py
+    #Now we create bikes for inventory that will be set by bicycleScript.py
     def add_inventory(self, bicycle):
 
         self.inventory.append(bicycle)
