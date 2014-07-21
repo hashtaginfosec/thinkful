@@ -16,37 +16,21 @@ mountain_wheel = Wheels(24, 80, "Mountain")
 #print(bmx_wheel.cost)
 
 #create 3 frame types
-aluminum_frame = Frames("Aluminum", 1000, 150)
-carbon_frame = Frames("Carbon", 700, 130)
-steel_frame = Frames("Steel", 500, 100)
-#print(steel_frame.material)
+aluminum_frame = Frames("Aluminum", 150, 1000)
+carbon_frame = Frames("Carbon", 130, 700)
+steel_frame = Frames("Steel", 110, 500)
+
+# print(steel_frame.weight)
 
 #create 2 bicycle manufacturers
 jedi_bikes = Manufacturers("Jedi Bikes", 18)
 yoda_bikes = Manufacturers("Yoda Bikes", 20)
-#print(yoda_bikes.percent)
-#create 3 bicycle models for each of 2 manufacturers:
 
-#Jedi_Bikes
-jedi_bikes.new_bicycle("Jedi Roadster", aluminum_frame, road_wheel)
-jedi_bikes.new_bicycle("Jedi BMX", carbon_frame, bmx_wheel)
-jedi_bikes.new_bicycle("Jedi Climber", steel_frame, mountain_wheel)
 
-#Yoda Bikes
-#gives error: AttributeError: 'Bicycles' object has no attribute 'frame'
-yoda_bikes.new_bicycle("Yoda AM", aluminum_frame, mountain_wheel)
-yoda_bikes.new_bicycle("Yoda SB", steel_frame, bmx_wheel)
-yoda_bikes.new_bicycle("Yoda CR", carbon_frame, road_wheel)
+#every thing works well so far but when next statement is run, I get an error:
+#    self.weight = Frames.weight + Wheels.weight * 2  <<< Hitting bicycles class and calculating total weight 
+#AttributeError: type object 'Frames' has no attribute 'weight'
 
-#Add bikes to Shop inventory
-#TypeError: 'Manufacturers' object does not support indexing
-
-martys = Shops("Marty\'s", 20)
-martys.add_inventory(jedi_bikes[0])
-martys.add_inventory(jedi_bikes[1])
-martys.add_inventory(jedi_bikes[2])
-martys.add_inventory(yoda_bikes[0])
-martys.add_inventory(yoda_bikes[1])
-martys.add_inventory(yoda_bikes[2])
+jedi_roadster = Bicycles("Jedi Roadster", jedi_bikes, aluminum_frame, road_wheel)
 
 
