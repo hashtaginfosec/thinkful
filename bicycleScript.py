@@ -23,8 +23,8 @@ steel_frame = Frames("Steel", 50, 50)
 # print(steel_frame.weight)
 
 #create 2 bicycle manufacturers
-jedi_bikes = Manufacturers("Jedi Bikes", 18)
-yoda_bikes = Manufacturers("Yoda Bikes", 20)
+jedi_bikes = Manufacturers("Jedi Bikes", 8)
+yoda_bikes = Manufacturers("Yoda Bikes", 10)
 
 
 #create 3 bicycle models for each of 2 manufacturers:
@@ -45,19 +45,23 @@ martys.add_inventory(yoda_am)
 martys.add_inventory(yoda_cr)
 martys.add_inventory(yoda_sb)
 
-
+print("-----------------------------------------------------------------------")
 #Try to add retail cost:
-# for each_bike in martys.inventory:
-#
-#     if "Yoda" in each_bike.name:
-#         print(each_bike.name + " >> " + str(each_bike.cost))
-#         print(each_bike.name + " >> " + str(each_bike.cost))
-#         print("Added Yoda Bike's margin of $" + str(yoda_bikes.percent) + " to " + each_bike.name)
-#
-#     elif "Jedi" in each_bike.name:
-#         print(each_bike.name + " >> " + str(each_bike.cost))
-#         each_bike.cost = each_bike.cost + jedi_bikes.percent + martys.margin
-#         print("Added Jedi Bike's margin of $" + str(jedi_bikes.percent) + " to " + each_bike.name)
+for each_bike in martys.inventory:
+
+    if "Yoda" in each_bike.name:
+        print(each_bike.name + " >> $" + str(each_bike.cost))
+        each_bike.cost = int(each_bike.cost) + int(yoda_bikes.percent) + int(martys.margin)
+        print("Added Yoda Bike's margin of $" + str(yoda_bikes.percent) + " to " + each_bike.name)
+        print("Added Marty's margin of $" + str(martys.margin) + " to " + each_bike.name)
+        print(each_bike.name + " >> $" + str(each_bike.cost) + "\n")
+
+    elif "Jedi" in each_bike.name:
+        print(each_bike.name + " >> $" + str(each_bike.cost))
+        each_bike.cost = int(each_bike.cost) + int(jedi_bikes.percent) + int(martys.margin)
+        print("Added Jedi Bike's margin of $" + str(jedi_bikes.percent) + " to " + each_bike.name)
+        print("Added Marty's margin of $" + str(martys.margin) + " to " + each_bike.name)
+        print(each_bike.name + " >> $" + str(each_bike.cost) + "\n")
 
 
 
@@ -105,10 +109,9 @@ for each_client in clients:
 
     if item in martys.inventory:
         if item.cost < budget:
-            print("Wholesale cost is $" + str(Bicycles.wholesale_cost(item)))  # Still need to include retail cost
-            #print(Shops.retail_cost(item, martys))
-
+            martys.profit = martys.profit + item.cost
             martys.inventory.remove(item)  #bike has been purchased. Still need to add it to customer's inventory.
+            print(each_client + " purchased " + each_bike.name)
 
         else:
             print("Item not in your price range.")
@@ -124,6 +127,7 @@ print("-----------------------------------")
 print("\n" + martys.name + " currently carries following bicycles: ")
 for each_bike in martys.inventory:
     print(each_bike.name + " costs $" + str(each_bike.cost))
+print("Total profit for today >> $" + str(martys.profit))
 
 print("-----------------------------------")
 
